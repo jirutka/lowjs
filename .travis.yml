@@ -1,0 +1,16 @@
+dist: bionic
+language: c
+
+#compiler:
+#  - clang
+#  - gcc
+
+before_install:
+  - pip2 install PyYAML
+  - npm ci
+  - ( cd test/tests_script && npm ci )
+
+script:
+  - make
+  - npm run test -- run
+  - make dist
